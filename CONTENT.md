@@ -1,6 +1,6 @@
 # Content management — brainstorm & roadmap
 
-How `jungin.dev` should manage content as it grows. This is a thinking document, not a spec: it lays out the current model, the realistic options, and a recommended path with the trade-offs spelled out so the decisions stay yours.
+How `yujungin.com` should manage content as it grows. This is a thinking document, not a spec: it lays out the current model, the realistic options, and a recommended path with the trade-offs spelled out so the decisions stay yours.
 
 Context that shapes every recommendation below: **one author, infrequent-but-crafted long-form posts, code- and math-heavy, comfortable with git, deployed static on Netlify.** That profile pulls hard toward "keep it simple and in-repo" and away from heavyweight CMS infrastructure.
 

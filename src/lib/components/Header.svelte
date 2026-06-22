@@ -17,7 +17,7 @@
   <div class="wrap flex h-[62px] max-w-280 items-center justify-between">
     <a
       href={resolve("/")}
-      aria-label="jungin.dev home"
+      aria-label="yujungin.com home"
       class="font-serif text-[21px] font-medium tracking-[-0.01em] text-ink"
     >
       jungin<span class="text-accent">.dev</span>

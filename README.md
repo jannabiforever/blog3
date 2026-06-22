@@ -1,4 +1,4 @@
-# jungin.dev
+# yujungin.com
 
 A personal, editorial-style tech blog — systems & engineering, with detours into math and physics. Built from the `design_handoff` reference (Editorial / Violet).
 

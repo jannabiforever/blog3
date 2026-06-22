@@ -7,7 +7,7 @@
 export const site = {
   name: "yujungin.com",
   title: "yujungin.com",
-  url: "https://yujungin.com",
+  url: "https://www.yujungin.com",
   description:
     "A personal journal by Jungin on software, with frequent detours into math and physics.",
   tagline: "A journal on code, math & physics",

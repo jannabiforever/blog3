@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-  <title>Subscribe · jungin.dev</title>
+  <title>Subscribe · yujungin.com</title>
   <meta name="description" content="Subscribe to new essays." />
 </svelte:head>
 

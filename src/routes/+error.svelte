@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-  <title>{page.status} · jungin.dev</title>
+  <title>{page.status} · yujungin.com</title>
 </svelte:head>
 
 <main class="wrap max-w-170 py-[120px] text-center">

@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-  <title>{meta.title} · jungin.dev</title>
+  <title>{meta.title} · yujungin.com</title>
   <meta name="description" content={meta.excerpt} />
 </svelte:head>
 

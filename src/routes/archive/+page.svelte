@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-  <title>Archive · jungin.dev</title>
+  <title>Archive · yujungin.com</title>
   <meta name="description" content="Everything published, in reverse order of obsession." />
 </svelte:head>
 

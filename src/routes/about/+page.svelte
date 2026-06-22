@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-  <title>About · jungin.dev</title>
+  <title>About · yujungin.com</title>
   <meta name="description" content="About {author.name}." />
 </svelte:head>
 
