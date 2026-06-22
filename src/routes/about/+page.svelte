@@ -10,11 +10,11 @@
 </svelte:head>
 
 <main class="wrap max-w-170 pb-20">
-  <header class="mb-[34px] border-b border-hair pt-[60px] pb-[30px] text-center">
+  <header class="mb-8.5 border-b border-hair pt-15 pb-7.5 text-center">
     <Eyebrow tone="accent" tracking="0.12em" mb={20}>About</Eyebrow>
     <h1 class="font-serif text-[30px] font-medium tracking-[-0.02em]">{author.name}</h1>
     <p
-      class="mx-auto mt-5 max-w-[520px] font-serif text-[17px] leading-[1.55] text-secondary-2 italic"
+      class="mx-auto mt-5 max-w-130 font-serif text-[17px] leading-[1.55] text-secondary-2 italic"
     >
       {author.role} — writing about the parts that don’t fit in a commit message.
     </p>

@@ -10,11 +10,11 @@
       <div class="mb-2 font-serif text-[19px] font-medium">
         jungin<span class="text-accent">.dev</span>
       </div>
-      <p class="m-0 max-w-[340px] text-[13px] leading-[1.6] text-muted-3">
+      <p class="m-0 max-w-85 text-[13px] leading-[1.6] text-muted-3">
         A personal journal by {author.name} on software, with frequent detours into math and physics.
       </p>
     </div>
-    <nav class="flex gap-[22px] font-mono text-[12px]">
+    <nav class="flex gap-5.5 font-mono text-[12px]">
       <a href={site.social.github} rel="external" class="text-secondary-3 hover:text-ink">GitHub</a>
       <a href={site.social.rss} rel="external" class="text-secondary-3 hover:text-ink">RSS</a>
       <a href={site.social.email} rel="external" class="text-secondary-3 hover:text-ink">Email</a>

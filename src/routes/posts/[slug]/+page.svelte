@@ -28,7 +28,7 @@
 
   {#key meta.slug}
     <article class="animate-fade-up pt-10 pb-15">
-      <header class="mb-[34px] border-b border-hair pb-[30px] text-center">
+      <header class="mb-8.5 border-b border-hair pb-7.5 text-center">
         <Eyebrow tone="accent" tracking="0.12em" mb={20}>{meta.category}</Eyebrow>
         <h1
           class="mx-auto font-serif text-[30px] leading-[1.2] font-medium tracking-[-0.02em] text-balance max-[720px]:text-[26px]"
@@ -36,7 +36,7 @@
           {meta.title}
         </h1>
         <p
-          class="mx-auto mt-[22px] mb-[30px] max-w-[520px] font-serif text-[17px] leading-[1.55] text-secondary-2 italic"
+          class="mx-auto mt-5.5 mb-7.5 max-w-130 font-serif text-[17px] leading-[1.55] text-secondary-2 italic"
         >
           {meta.excerpt}
         </p>

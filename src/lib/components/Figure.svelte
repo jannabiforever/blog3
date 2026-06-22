@@ -23,12 +23,12 @@
     <img
       {src}
       {alt}
-      class="block w-full rounded-[4px] border border-fig-border object-cover"
+      class="block w-full rounded-sm border border-fig-border object-cover"
       style="aspect-ratio: {ratio};"
     />
   {:else}
     <div
-      class="fig-stripes flex items-end rounded-[4px] border border-fig-border p-4"
+      class="fig-stripes flex items-end rounded-sm border border-fig-border p-4"
       style="aspect-ratio: {ratio};"
     >
       {#if caption}
@@ -39,7 +39,7 @@
     </div>
   {/if}
   {#if src && caption}
-    <figcaption class="mt-[11px] text-center font-mono text-[11px] text-faint-2">
+    <figcaption class="mt-2.75 text-center font-mono text-[11px] text-faint-2">
       {caption}
     </figcaption>
   {/if}

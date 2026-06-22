@@ -12,7 +12,7 @@
 </svelte:head>
 
 <main class="wrap max-w-220">
-  <section class="animate-fade-up pt-20 pb-9 text-center max-[720px]:pt-[52px] max-[720px]:pb-7">
+  <section class="animate-fade-up pt-20 pb-9 text-center max-[720px]:pt-13 max-[720px]:pb-7">
     <Eyebrow tone="meta" tracking="0.18em" mb={22}>
       {data.count} entries · {data.groups[0]?.year ?? ""}
     </Eyebrow>
@@ -24,9 +24,9 @@
     </p>
   </section>
 
-  <section class="pt-2 pb-[100px]">
+  <section class="pt-2 pb-25">
     {#each data.groups as group (group.year)}
-      <div class="flex items-baseline gap-[14px] border-t border-hair pt-[34px] pb-[6px]">
+      <div class="flex items-baseline gap-3.5 border-t border-hair pt-8.5 pb-1.5">
         <span class="font-serif text-[30px] font-medium tracking-[-0.01em] text-rule">
           {group.year}
         </span>

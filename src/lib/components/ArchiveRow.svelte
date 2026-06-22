@@ -9,7 +9,7 @@
 
 <a
   href={resolve("/posts/[slug]", { slug: post.slug })}
-  class="-mx-4 grid grid-cols-[1fr_auto] items-baseline gap-6 rounded-[6px] border-b border-hair-archive px-4 py-[18px] text-inherit transition-colors hover:bg-surface"
+  class="-mx-4 grid grid-cols-[1fr_auto] items-baseline gap-6 rounded-md border-b border-hair-archive px-4 py-4.5 text-inherit transition-colors hover:bg-surface"
 >
   <div class="min-w-0">
     <h3 class="mb-1 font-serif text-[17px] font-medium leading-[1.35] tracking-[-0.01em] text-ink">

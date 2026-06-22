@@ -22,13 +22,13 @@
       {site.tagline} &nbsp;·&nbsp; {data.posts.length} essays
     </Eyebrow>
     <h1
-      class="mx-auto max-w-[720px] font-serif text-[38px] leading-[1.18] font-medium tracking-[-0.02em] text-balance max-[720px]:text-[30px]"
+      class="mx-auto max-w-180 font-serif text-[38px] leading-[1.18] font-medium tracking-[-0.02em] text-balance max-[720px]:text-[30px]"
     >
       {site.heroTitle}
     </h1>
-    <div class="mx-auto mt-[34px] h-px w-[54px] bg-rule"></div>
+    <div class="mx-auto mt-8.5 h-px w-13.5 bg-rule"></div>
     <p
-      class="mx-auto mt-[30px] max-w-[520px] font-serif text-[17px] leading-[1.55] text-secondary-2 italic"
+      class="mx-auto mt-7.5 max-w-130 font-serif text-[17px] leading-[1.55] text-secondary-2 italic"
     >
       {site.heroSub}
     </p>
@@ -41,7 +41,7 @@
     </section>
   {/if}
 
-  <section class="pt-10 pb-[100px]">
+  <section class="pt-10 pb-25">
     <Eyebrow tone="section" tracking="0.16em" mb={6}>Latest</Eyebrow>
     {#each rest as post (post.slug)}
       <PostRow {post} />

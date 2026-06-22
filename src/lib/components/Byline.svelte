@@ -19,9 +19,9 @@
   } = $props();
 </script>
 
-<div class="{align === 'center' ? 'inline-flex text-left' : 'flex'} items-center gap-[11px]">
+<div class="{align === 'center' ? 'inline-flex text-left' : 'flex'} items-center gap-2.75">
   <div
-    class="flex h-[34px] w-[34px] flex-none items-center justify-center rounded-full border border-avatar-border bg-avatar-bg font-mono text-[11px] font-medium text-accent"
+    class="flex h-8.5 w-8.5 flex-none items-center justify-center rounded-full border border-avatar-border bg-avatar-bg font-mono text-[11px] font-medium text-accent"
   >
     {initials}
   </div>
