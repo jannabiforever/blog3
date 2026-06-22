@@ -50,13 +50,13 @@ describe("frontmatter schema", () => {
 });
 
 /** Raw markdown for every real post, keyed by path, read straight from disk. */
-const posts = import.meta.glob("/src/docs/*.md", {
+const posts = import.meta.glob("/src/post/*.md", {
   query: "?raw",
   import: "default",
   eager: true,
 }) as Record<string, string>;
 
-describe("docs frontmatter", () => {
+describe("post frontmatter", () => {
   it("discovers posts to validate", () => {
     expect(Object.keys(posts).length).toBeGreaterThan(0);
   });

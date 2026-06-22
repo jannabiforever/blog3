@@ -19,7 +19,7 @@ pnpm test         # frontmatter schema + content validation (vitest)
 
 ## Writing a post
 
-Drop a Markdown file in [`src/docs/`](src/docs). The filename (minus `.md`) becomes the URL slug — `my-post.md` → `/posts/my-post`. Frontmatter is validated with **Effect Schema** ([`src/lib/server/frontmatter.ts`](src/lib/server/frontmatter.ts)) — at build time and in CI ([`frontmatter.test.ts`](src/lib/server/frontmatter.test.ts)) — so a missing or malformed field fails and names the offending file.
+Drop a Markdown file in [`src/post/`](src/post). The filename (minus `.md`) becomes the URL slug — `my-post.md` → `/posts/my-post`. Frontmatter is validated with **Effect Schema** ([`src/lib/server/frontmatter.ts`](src/lib/server/frontmatter.ts)) — at build time and in CI ([`frontmatter.test.ts`](src/lib/server/frontmatter.test.ts)) — so a missing or malformed field fails and names the offending file.
 
 ```markdown
 ---
@@ -55,7 +55,7 @@ That's the whole workflow: add a file, commit, push. See [CONTENT.md](CONTENT.md
 
 ```
 src/
-├─ docs/*.md                the posts (Markdown source — add / edit here)
+├─ post/*.md                the posts (Markdown source — add / edit here)
 ├─ app.css                  Design tokens (CSS variables) + base + .wrap columns
 ├─ app.html                 Google Fonts (Newsreader / IBM Plex Sans / IBM Plex Mono)
 ├─ lib/
@@ -89,7 +89,7 @@ src/
 
 [`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs on every push to `main` and on pull requests:
 
-1. **`validate`** — `pnpm check` (types), `pnpm test` (frontmatter schema + every post in `docs/`), then `pnpm build`.
+1. **`validate`** — `pnpm check` (types), `pnpm test` (frontmatter schema + every post in `post/`), then `pnpm build`.
 2. **`deploy`** — runs only after `validate` passes on `main`. Ships to Netlify with the Netlify CLI (`netlify deploy --build --prod`), which runs the same `@netlify/build` pipeline as a native Git deploy: the committed `netlify.toml` build command plus the adapter-netlify output (publish dir + the fallback function).
 
 **One-time setup** in the GitHub repo → _Settings → Secrets and variables → Actions_:

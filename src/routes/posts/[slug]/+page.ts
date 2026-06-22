@@ -6,7 +6,7 @@ import type { PageLoad } from "./$types";
 // absolute) instead of a relative dynamic import makes Vite resolve these
 // reliably on BOTH server and client — the client re-runs this load on
 // hydration to reconstruct the (non-serializable) body component.
-const posts = import.meta.glob<PostModule>("/src/docs/*.md");
+const posts = import.meta.glob<PostModule>("/src/post/*.md");
 
 /**
  * Universal load: resolves the compiled markdown component for this slug and
@@ -14,7 +14,7 @@ const posts = import.meta.glob<PostModule>("/src/docs/*.md");
  * validation stays server-side (see +page.server.ts).
  */
 export const load: PageLoad = async ({ params, data }) => {
-  const importer = posts[`/src/docs/${params.slug}.md`];
+  const importer = posts[`/src/post/${params.slug}.md`];
   if (!importer) throw error(404, `Post “${params.slug}” not found`);
 
   const mod = await importer();

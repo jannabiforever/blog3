@@ -1,6 +1,6 @@
 import type { Component } from "svelte";
 
-/** Frontmatter as authored in `src/content/posts/*.md` (no slug yet). */
+/** Frontmatter as authored in `src/post/*.md` (no slug yet). */
 export interface PostFrontmatter {
   title: string;
   /** ISO date, quoted in YAML: "2026-06-14". */

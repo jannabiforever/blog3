@@ -1,7 +1,7 @@
 import { Schema } from "effect";
 
 /**
- * Frontmatter is the content contract for every post in `/docs/*.md`.
+ * Frontmatter is the content contract for every post in `/post/*.md`.
  *
  * It is validated with Effect Schema so a bad or missing field fails loudly,
  * pointing at the offending file — at build time (see `getAllPosts` in

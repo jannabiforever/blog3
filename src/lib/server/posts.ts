@@ -12,8 +12,8 @@ import { decodeFrontmatter, type Frontmatter } from "./frontmatter";
  * bad/missing field fails the build loudly, pointing at the file.
  */
 
-const postModules = import.meta.glob<PostModule>("/src/docs/*.md");
-const rawModules = import.meta.glob("/src/docs/*.md", {
+const postModules = import.meta.glob<PostModule>("/src/post/*.md");
+const rawModules = import.meta.glob("/src/post/*.md", {
   query: "?raw",
   import: "default",
   eager: true,
