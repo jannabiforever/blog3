@@ -8,7 +8,7 @@
   <meta name="description" content="Subscribe to new essays." />
 </svelte:head>
 
-<main class="wrap max-w-[42.5rem] pt-20 pb-[100px] text-center">
+<main class="wrap max-w-170 pt-20 pb-[100px] text-center">
   <Eyebrow tone="accent" tracking="0.12em" mb={20}>Subscribe</Eyebrow>
   <h1
     class="mx-auto max-w-[520px] font-serif text-[30px] leading-[1.2] font-medium tracking-[-0.02em] text-balance"

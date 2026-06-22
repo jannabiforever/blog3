@@ -14,7 +14,7 @@
 <header
   class="sticky top-0 z-20 border-b border-hair bg-bg/85 backdrop-blur-[10px] backdrop-saturate-[1.6]"
 >
-  <div class="wrap flex h-[62px] max-w-[70rem] items-center justify-between">
+  <div class="wrap flex h-[62px] max-w-280 items-center justify-between">
     <a
       href={resolve("/")}
       aria-label="jungin.dev home"

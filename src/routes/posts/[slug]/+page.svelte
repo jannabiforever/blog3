@@ -19,7 +19,7 @@
   <meta name="description" content={meta.excerpt} />
 </svelte:head>
 
-<main class="wrap max-w-[42.5rem]">
+<main class="wrap max-w-170">
   <div class="pt-9">
     <a href={resolve("/")} class="font-mono text-[11px] uppercase tracking-[0.06em] text-accent">
       &larr; Writing

@@ -11,7 +11,7 @@
   <meta name="description" content="Everything published, in reverse order of obsession." />
 </svelte:head>
 
-<main class="wrap max-w-[55rem]">
+<main class="wrap max-w-220">
   <section class="animate-fade-up pt-20 pb-9 text-center max-[720px]:pt-[52px] max-[720px]:pb-7">
     <Eyebrow tone="meta" tracking="0.18em" mb={22}>
       {data.count} entries · {data.groups[0]?.year ?? ""}

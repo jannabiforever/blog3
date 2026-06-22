@@ -4,7 +4,7 @@
 
 <footer class="border-t border-hair bg-surface">
   <div
-    class="wrap grid max-w-[70rem] grid-cols-[1fr_auto] items-end gap-6 py-12 max-[560px]:grid-cols-1 max-[560px]:items-start"
+    class="wrap grid max-w-280 grid-cols-[1fr_auto] items-end gap-6 py-12 max-[560px]:grid-cols-1 max-[560px]:items-start"
   >
     <div>
       <div class="mb-2 font-serif text-[19px] font-medium">

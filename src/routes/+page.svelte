@@ -16,7 +16,7 @@
   <meta name="description" content={site.description} />
 </svelte:head>
 
-<main class="wrap max-w-[70rem]">
+<main class="wrap max-w-280">
   <section class="animate-fade-up pt-16 pb-11 text-center max-[720px]:pt-11 max-[720px]:pb-8">
     <Eyebrow tone="meta" tracking="0.18em" mb={30}>
       {site.tagline} &nbsp;·&nbsp; {data.posts.length} essays

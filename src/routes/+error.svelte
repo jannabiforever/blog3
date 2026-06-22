@@ -7,7 +7,7 @@
   <title>{page.status} · jungin.dev</title>
 </svelte:head>
 
-<main class="wrap max-w-[42.5rem] py-[120px] text-center">
+<main class="wrap max-w-170 py-[120px] text-center">
   <div class="mb-[18px] font-mono text-[11px] uppercase tracking-[0.18em] text-muted-3">
     {page.status}
   </div>
