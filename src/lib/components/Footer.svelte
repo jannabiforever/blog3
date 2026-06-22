@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { site, author } from "$lib/config";
+  import { site } from "$lib/config";
 </script>
 
 <footer class="border-t border-hair bg-surface">
@@ -8,10 +8,10 @@
   >
     <div>
       <div class="mb-2 font-serif text-[19px] font-medium">
-        jungin<span class="text-accent">.dev</span>
+        yujungin<span class="text-accent">.com</span>
       </div>
       <p class="m-0 max-w-85 text-[13px] leading-[1.6] text-muted-3">
-        A personal journal by {author.name} on software, with frequent detours into math and physics.
+        A personal journal by Jungin on software, with frequent detours into math and physics.
       </p>
     </div>
     <nav class="flex gap-5.5 font-mono text-[12px]">

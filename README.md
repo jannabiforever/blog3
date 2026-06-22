@@ -59,7 +59,7 @@ src/
 ├─ app.css                  Design tokens (CSS variables) + base + .wrap columns
 ├─ app.html                 Google Fonts (Newsreader / IBM Plex Sans / IBM Plex Mono)
 ├─ lib/
-│  ├─ config.ts             Site identity, nav, social, author — all editable copy
+│  ├─ config.ts             Site identity, nav, social — all editable copy
 │  ├─ types.ts              PostFrontmatter / PostMeta / YearGroup
 │  ├─ server/posts.ts       getAllPosts() — Effect-validated frontmatter (server-only)
 │  ├─ utils/{date,group}.ts shortDate / dottedDate / year / groupByYear

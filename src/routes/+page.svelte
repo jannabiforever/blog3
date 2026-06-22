@@ -1,7 +1,6 @@
 <script lang="ts">
   import { site } from "$lib/config";
   import Eyebrow from "$lib/components/Eyebrow.svelte";
-  import FeaturedPost from "$lib/components/FeaturedPost.svelte";
   import PostRow from "$lib/components/PostRow.svelte";
   import type { PageData } from "./$types";
 
@@ -33,13 +32,6 @@
       {site.heroSub}
     </p>
   </section>
-
-  {#if featured}
-    <section class="border-y border-hair pt-7">
-      <Eyebrow tone="section" tracking="0.16em">Featured</Eyebrow>
-      <FeaturedPost post={featured} />
-    </section>
-  {/if}
 
   <section class="pt-10 pb-25">
     <Eyebrow tone="section" tracking="0.16em" mb={6}>Latest</Eyebrow>

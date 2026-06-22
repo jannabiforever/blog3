@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { author } from "$lib/config";
   import { resolve } from "$app/paths";
   import Eyebrow from "$lib/components/Eyebrow.svelte";
   import Byline from "$lib/components/Byline.svelte";
@@ -41,8 +40,8 @@
           {meta.excerpt}
         </p>
         <Byline
-          name={author.name}
-          initials={author.initials}
+          name="Yu Jungin"
+          initials="JI"
           date={meta.date}
           readTime={meta.readTime}
           suffix="read"

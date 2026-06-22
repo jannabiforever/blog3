@@ -20,7 +20,7 @@
       aria-label="yujungin.com home"
       class="font-serif text-[21px] font-medium tracking-[-0.01em] text-ink"
     >
-      jungin<span class="text-accent">.dev</span>
+      yujungin<span class="text-accent">.com</span>
     </a>
     <nav class="flex items-center gap-1">
       <a href={resolve("/")} class="{nav} {isHome ? 'text-ink' : 'text-muted'}">Writing</a>

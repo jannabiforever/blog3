@@ -10,10 +10,9 @@ export const site = {
   url: "https://www.yujungin.com",
   description:
     "A personal journal by Jungin on software, with frequent detours into math and physics.",
-  tagline: "A journal on code, math & physics",
-  heroTitle: "Notes on building software — with detours into the math and physics underneath.",
-  heroSub:
-    "Mostly engineering and systems, with the occasional derivation or physics problem that wouldn’t leave me alone.",
+  tagline: "Super - Personal Blog",
+  heroTitle: "Notes on whatever I'm thinking through.",
+  heroSub: "Math, physics, neuroscience, software — wherever the curiosity goes.",
   nav: [
     { label: "Writing", href: "/" },
     { label: "Archive", href: "/archive" },
@@ -24,10 +23,4 @@ export const site = {
     rss: "/rss.xml",
     email: "mailto:jungini1226@gmail.com",
   },
-} as const;
-
-export const author = {
-  name: "Jungin",
-  role: "Systems engineer",
-  initials: "JI",
 } as const;
