@@ -14,11 +14,12 @@ pnpm dev          # http://localhost:5173
 pnpm build        # static output → build/  (also wires Netlify functions)
 pnpm preview      # serve the production build locally
 pnpm check        # svelte-check (types)
+pnpm test         # frontmatter schema + content validation (vitest)
 ```
 
 ## Writing a post
 
-Drop a Markdown file in [`src/docs/`](src/docs). The filename (minus `.md`) becomes the URL slug — `my-post.md` → `/posts/my-post`. Frontmatter is validated at build time with **Effect Schema** ([`src/lib/server/posts.ts`](src/lib/server/posts.ts)), so a missing or malformed field fails the build and names the offending file.
+Drop a Markdown file in [`src/docs/`](src/docs). The filename (minus `.md`) becomes the URL slug — `my-post.md` → `/posts/my-post`. Frontmatter is validated with **Effect Schema** ([`src/lib/server/frontmatter.ts`](src/lib/server/frontmatter.ts)) — at build time and in CI ([`frontmatter.test.ts`](src/lib/server/frontmatter.test.ts)) — so a missing or malformed field fails and names the offending file.
 
 ```markdown
 ---
@@ -84,8 +85,20 @@ src/
 
 **Component split** follows the handoff's repeated patterns: primitives reused across views (`Eyebrow`, `Byline`, `Figure`), one component per list-row type, and `Prose` isolating all the `:global()` styling for mdsvex-rendered HTML. One-off layout (the hero, the archive header) stays inline in its route rather than being prematurely abstracted.
 
-## Deploying to Netlify
+## CI / CD
 
-`netlify.toml` is committed (`build` → `build/`, Node 22). Connect the repo in Netlify and it builds on push — the lockfile makes it use pnpm automatically. The site is fully prerendered, so it serves as static files; the Netlify adapter only adds a function if a non-prerenderable route is introduced later.
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs on every push to `main` and on pull requests:
+
+1. **`validate`** — `pnpm check` (types), `pnpm test` (frontmatter schema + every post in `docs/`), then `pnpm build`.
+2. **`deploy`** — runs only after `validate` passes on `main`. Ships to Netlify with the Netlify CLI (`netlify deploy --build --prod`), which runs the same `@netlify/build` pipeline as a native Git deploy: the committed `netlify.toml` build command plus the adapter-netlify output (publish dir + the fallback function).
+
+**One-time setup** in the GitHub repo → _Settings → Secrets and variables → Actions_:
+
+| Secret               | Where to find it                                                  |
+| -------------------- | ----------------------------------------------------------------- |
+| `NETLIFY_AUTH_TOKEN` | Netlify → _User settings → Applications → Personal access tokens_ |
+| `NETLIFY_SITE_ID`    | Netlify → _Site configuration → General → Site ID_                |
+
+Because deploys now run from Actions, **turn off Netlify's own Git auto-builds** (Netlify → _Site configuration → Build & deploy → Continuous deployment → Stop builds_) so the two don't race. `netlify.toml` stays committed — the CLI build reads it.
 
 Before going live, set the real values in [`src/lib/config.ts`](src/lib/config.ts) (`site.url`, social links) so canonical URLs and the RSS feed are correct.

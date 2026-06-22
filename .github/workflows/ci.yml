@@ -1,0 +1,86 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Least privilege: the jobs only read the repo; Netlify auth comes from secrets.
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Check, test & build
+    runs-on: ubuntu-latest
+    # Supersede in-flight runs for the same ref (e.g. rapid PR pushes).
+    concurrency:
+      group: validate-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      # Runs the `prepare` script (svelte-kit sync) as part of install.
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Type-check
+        run: pnpm run check
+
+      - name: Lint
+        run: pnpm run lint
+
+      # Validates the frontmatter schema and every post in /docs against it.
+      - name: Test
+        run: pnpm run test
+
+      - name: Build
+        run: pnpm run build
+
+  deploy:
+    name: Deploy to Netlify
+    needs: validate
+    # Only deploy production from main (on a merge/push or a manual run).
+    if: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
+    runs-on: ubuntu-latest
+    # Never cancel a deploy mid-flight; queue concurrent production deploys.
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # `--build` runs @netlify/build (the netlify.toml command + adapter-netlify
+      # output, incl. the fallback function) exactly like Netlify's git deploy,
+      # then ships it. Auth is headless via the two env secrets below.
+      - name: Build & deploy to Netlify
+        run: pnpm dlx netlify-cli@26 deploy --build --prod --message "${{ github.sha }}"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

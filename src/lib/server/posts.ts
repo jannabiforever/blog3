@@ -1,5 +1,5 @@
-import { Schema } from "effect";
 import type { PostMeta, PostModule } from "$lib/types";
+import { decodeFrontmatter, type Frontmatter } from "./frontmatter";
 
 /**
  * Server-only post collection.
@@ -8,27 +8,9 @@ import type { PostMeta, PostModule } from "$lib/types";
  * reach the client bundle — listings/feed load through `+page.server.ts`,
  * which run at build time for the prerendered site.
  *
- * Frontmatter is the content contract; it is validated with Effect Schema
- * so a bad/missing field fails the build loudly, pointing at the file.
+ * Frontmatter is validated against the schema in `./frontmatter`, so a
+ * bad/missing field fails the build loudly, pointing at the file.
  */
-const Frontmatter = Schema.Struct({
-  title: Schema.String,
-  date: Schema.String.pipe(
-    Schema.pattern(/^\d{4}-\d{2}-\d{2}$/, {
-      message: () => 'must be an ISO date string like "2026-06-14" (quote it in YAML)',
-    }),
-  ),
-  category: Schema.String,
-  excerpt: Schema.String,
-  /** Optional manual override; auto-estimated from word count when omitted. */
-  readTime: Schema.optional(Schema.String),
-  featured: Schema.optional(Schema.Boolean),
-  coverCaption: Schema.optional(Schema.String),
-  cover: Schema.optional(Schema.Boolean),
-  draft: Schema.optional(Schema.Boolean),
-});
-
-const decodeFrontmatter = Schema.decodeUnknownSync(Frontmatter);
 
 const postModules = import.meta.glob<PostModule>("/src/docs/*.md");
 const rawModules = import.meta.glob("/src/docs/*.md", {
@@ -52,7 +34,7 @@ export async function getAllPosts(): Promise<PostMeta[]> {
     Object.entries(postModules).map(async ([path, resolve]) => {
       const { metadata } = await resolve();
 
-      let frontmatter: Schema.Schema.Type<typeof Frontmatter>;
+      let frontmatter: Frontmatter;
       try {
         frontmatter = decodeFrontmatter(metadata);
       } catch (error) {
