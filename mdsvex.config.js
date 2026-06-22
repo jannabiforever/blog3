@@ -54,20 +54,11 @@ const codeTheme = {
       settings: { foreground: "#86b8f0" },
     },
     {
-      scope: [
-        "string",
-        "string.quoted",
-        "string.template",
-        "constant.character",
-      ],
+      scope: ["string", "string.quoted", "string.template", "constant.character"],
       settings: { foreground: "#9bb4cf" },
     },
     {
-      scope: [
-        "constant.numeric",
-        "constant.other",
-        "constant.language.boolean",
-      ],
+      scope: ["constant.numeric", "constant.other", "constant.language.boolean"],
       settings: { foreground: "#c0a9f0" },
     },
     {
@@ -131,10 +122,7 @@ function rehypeKatex() {
   return (tree) => {
     visit(tree, "text", (node, index, parent) => {
       if (!parent || typeof index !== "number") return;
-      if (
-        parent.type === "element" &&
-        (parent.tagName === "code" || parent.tagName === "pre")
-      )
+      if (parent.type === "element" && (parent.tagName === "code" || parent.tagName === "pre"))
         return;
       const value = node.value;
       if (!value.includes("$")) return;
@@ -144,8 +132,7 @@ function rehypeKatex() {
       let match;
       MATH.lastIndex = 0;
       while ((match = MATH.exec(value))) {
-        if (match.index > last)
-          out.push({ type: "text", value: value.slice(last, match.index) });
+        if (match.index > last) out.push({ type: "text", value: value.slice(last, match.index) });
         const display = match[1] != null;
         const tex = (match[1] ?? match[2]).trim();
         const html = katex.renderToString(tex, {
@@ -156,8 +143,7 @@ function rehypeKatex() {
         last = MATH.lastIndex;
       }
       if (out.length === 0) return;
-      if (last < value.length)
-        out.push({ type: "text", value: value.slice(last) });
+      if (last < value.length) out.push({ type: "text", value: value.slice(last) });
 
       parent.children.splice(index, 1, ...out);
       return [SKIP, index + out.length];

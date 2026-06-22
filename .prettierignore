@@ -1,0 +1,7 @@
+# Build output / deps
+build/
+.svelte-kit/
+node_modules/
+
+# Generated / lockfiles
+pnpm-lock.yaml

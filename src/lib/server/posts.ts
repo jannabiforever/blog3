@@ -15,8 +15,7 @@ const Frontmatter = Schema.Struct({
   title: Schema.String,
   date: Schema.String.pipe(
     Schema.pattern(/^\d{4}-\d{2}-\d{2}$/, {
-      message: () =>
-        'must be an ISO date string like "2026-06-14" (quote it in YAML)',
+      message: () => 'must be an ISO date string like "2026-06-14" (quote it in YAML)',
     }),
   ),
   category: Schema.String,
@@ -38,8 +37,7 @@ const rawModules = import.meta.glob("/docs/*.md", {
   eager: true,
 }) as Record<string, string>;
 
-const slugFromPath = (path: string) =>
-  path.split("/").pop()!.replace(/\.md$/, "");
+const slugFromPath = (path: string) => path.split("/").pop()!.replace(/\.md$/, "");
 
 /** Estimate reading time at ~200 wpm from the markdown body (frontmatter stripped). */
 function estimateReadTime(raw: string): string {
@@ -59,12 +57,11 @@ export async function getAllPosts(): Promise<PostMeta[]> {
         frontmatter = decodeFrontmatter(metadata);
       } catch (error) {
         const detail = error instanceof Error ? error.message : String(error);
-        throw new Error(`Invalid frontmatter in ${path}:\n${detail}`);
+        throw new Error(`Invalid frontmatter in ${path}:\n${detail}`, { cause: error });
       }
 
       const slug = slugFromPath(path);
-      const readTime =
-        frontmatter.readTime ?? estimateReadTime(rawModules[path] ?? "");
+      const readTime = frontmatter.readTime ?? estimateReadTime(rawModules[path] ?? "");
       return { ...frontmatter, slug, readTime } satisfies PostMeta;
     }),
   );

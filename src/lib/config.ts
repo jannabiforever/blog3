@@ -11,8 +11,7 @@ export const site = {
   description:
     "A personal journal by Jungin on software, with frequent detours into math and physics.",
   tagline: "A journal on code, math & physics",
-  heroTitle:
-    "Notes on building software — with detours into the math and physics underneath.",
+  heroTitle: "Notes on building software — with detours into the math and physics underneath.",
   heroSub:
     "Mostly engineering and systems, with the occasional derivation or physics problem that wouldn’t leave me alone.",
   nav: [
