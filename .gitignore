@@ -1,0 +1,18 @@
+node_modules
+
+# Output
+/build
+/.svelte-kit
+/package
+.netlify
+
+# Env
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+*.log
+.vscode/*
+!.vscode/extensions.json
