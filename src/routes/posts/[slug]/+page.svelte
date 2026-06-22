@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { resolve } from "$app/paths";
   import { author } from "$lib/config";
+  import { resolve } from "$app/paths";
   import Eyebrow from "$lib/components/Eyebrow.svelte";
   import Byline from "$lib/components/Byline.svelte";
   import Figure from "$lib/components/Figure.svelte";
@@ -19,17 +19,27 @@
   <meta name="description" content={meta.excerpt} />
 </svelte:head>
 
-<main class="wrap read">
-  <div class="back">
-    <a href={resolve("/")}>&larr; Writing</a>
+<main class="wrap max-w-[42.5rem]">
+  <div class="pt-9">
+    <a href={resolve("/")} class="font-mono text-[11px] uppercase tracking-[0.06em] text-accent">
+      &larr; Writing
+    </a>
   </div>
 
   {#key meta.slug}
-    <article>
-      <header>
+    <article class="animate-fade-up pt-10 pb-15">
+      <header class="mb-[34px] border-b border-hair pb-[30px] text-center">
         <Eyebrow tone="accent" tracking="0.12em" mb={20}>{meta.category}</Eyebrow>
-        <h1>{meta.title}</h1>
-        <p class="dek">{meta.excerpt}</p>
+        <h1
+          class="mx-auto font-serif text-[30px] leading-[1.2] font-medium tracking-[-0.02em] text-balance max-[720px]:text-[26px]"
+        >
+          {meta.title}
+        </h1>
+        <p
+          class="mx-auto mt-[22px] mb-[30px] max-w-[520px] font-serif text-[17px] leading-[1.55] text-secondary-2 italic"
+        >
+          {meta.excerpt}
+        </p>
         <Byline
           name={author.name}
           initials={author.initials}
@@ -52,50 +62,3 @@
 
   <PostNav prev={data.prev} next={data.next} />
 </main>
-
-<style>
-  .back {
-    padding: 36px 0 0;
-  }
-  .back a {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--accent);
-    text-decoration: none;
-  }
-  article {
-    padding: 40px 0 60px;
-    animation: fadeUp 0.5s ease both;
-  }
-  header {
-    text-align: center;
-    padding-bottom: 30px;
-    margin-bottom: 34px;
-    border-bottom: 1px solid var(--hair);
-  }
-  h1 {
-    margin: 0 auto;
-    font-family: var(--serif);
-    font-size: 30px;
-    line-height: 1.2;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    text-wrap: balance;
-  }
-  .dek {
-    margin: 22px auto 30px;
-    max-width: 520px;
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 17px;
-    line-height: 1.55;
-    color: var(--text-2b);
-  }
-  @media (max-width: 720px) {
-    h1 {
-      font-size: 26px;
-    }
-  }
-</style>

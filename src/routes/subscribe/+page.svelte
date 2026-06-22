@@ -8,92 +8,40 @@
   <meta name="description" content="Subscribe to new essays." />
 </svelte:head>
 
-<main class="wrap read subscribe">
+<main class="wrap max-w-[42.5rem] pt-20 pb-[100px] text-center">
   <Eyebrow tone="accent" tracking="0.12em" mb={20}>Subscribe</Eyebrow>
-  <h1>Get new essays in your reader or inbox.</h1>
-  <p class="dek">
+  <h1
+    class="mx-auto max-w-[520px] font-serif text-[30px] leading-[1.2] font-medium tracking-[-0.02em] text-balance"
+  >
+    Get new essays in your reader or inbox.
+  </h1>
+  <p
+    class="mx-auto mt-[22px] mb-8 max-w-[440px] font-serif text-[17px] leading-[1.55] text-secondary-2 italic"
+  >
     The newsletter form isn’t wired up yet. For now, follow along over
-    <a href={site.social.rss} rel="external">RSS</a>.
+    <a href={site.social.rss} rel="external" class="text-accent">RSS</a>.
   </p>
 
   <form
-    class="form"
+    class="mx-auto flex max-w-[420px] justify-center gap-[10px]"
     onsubmit={(e) => {
       e.preventDefault();
     }}
   >
-    <input type="email" placeholder="you@example.com" aria-label="Email address" />
-    <button type="submit">Notify me</button>
+    <input
+      type="email"
+      placeholder="you@example.com"
+      aria-label="Email address"
+      class="flex-1 rounded-full border border-subscribe-border bg-surface px-[14px] py-[10px] font-sans text-[14px] text-ink focus:border-accent focus:outline-none"
+    />
+    <button
+      type="submit"
+      class="cursor-pointer rounded-full border-none bg-accent px-[18px] py-[10px] font-mono text-[11px] uppercase tracking-[0.08em] text-surface"
+    >
+      Notify me
+    </button>
   </form>
-  <p class="note">
+  <p class="mt-[22px] font-mono text-[11px] text-muted-3">
     Hook this up to a provider (Buttondown, Listmonk, ConvertKit…) — see CONTENT.md.
   </p>
 </main>
-
-<style>
-  .subscribe {
-    padding: 80px 0 100px;
-    text-align: center;
-  }
-  h1 {
-    margin: 0 auto;
-    max-width: 520px;
-    font-family: var(--serif);
-    font-size: 30px;
-    line-height: 1.2;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    text-wrap: balance;
-  }
-  .dek {
-    margin: 22px auto 32px;
-    max-width: 440px;
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 17px;
-    line-height: 1.55;
-    color: var(--text-2b);
-  }
-  .dek a {
-    color: var(--accent);
-  }
-  .form {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    max-width: 420px;
-    margin: 0 auto;
-  }
-  input {
-    flex: 1;
-    font-family: var(--sans);
-    font-size: 14px;
-    padding: 10px 14px;
-    border: 1px solid var(--subscribe-border);
-    border-radius: 999px;
-    background: var(--surface);
-    color: var(--ink);
-  }
-  input:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
-  button {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--surface);
-    background: var(--accent);
-    border: none;
-    padding: 10px 18px;
-    border-radius: 999px;
-    cursor: pointer;
-  }
-  .note {
-    margin-top: 22px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted-3);
-  }
-</style>

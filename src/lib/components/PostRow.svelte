@@ -1,77 +1,27 @@
 <script lang="ts">
-  import { resolve } from "$app/paths";
   import type { PostMeta } from "$lib/types";
+  import { resolve } from "$app/paths";
   import { shortDate } from "$lib/utils/date";
   import Eyebrow from "./Eyebrow.svelte";
 
   let { post }: { post: PostMeta } = $props();
 </script>
 
-<a class="row" href={resolve("/posts/[slug]", { slug: post.slug })}>
-  <div class="when">
+<a
+  href={resolve("/posts/[slug]", { slug: post.slug })}
+  class="-mx-4 grid grid-cols-[96px_1fr] gap-8 rounded-[6px] border-b border-hair-list px-4 py-[30px] text-inherit transition-colors hover:bg-surface max-[560px]:grid-cols-1 max-[560px]:gap-[10px]"
+>
+  <div
+    class="pt-[6px] font-mono text-[11px] leading-[1.6] text-faint-2 max-[560px]:flex max-[560px]:gap-[10px] max-[560px]:pt-0"
+  >
     <div>{shortDate(post.date)}</div>
-    <div class="rt">{post.readTime}</div>
+    <div class="text-rule">{post.readTime}</div>
   </div>
-  <div class="body">
+  <div class="max-w-[640px]">
     <Eyebrow tone="accent" tracking="0.08em" mb={9}>{post.category}</Eyebrow>
-    <h3>{post.title}</h3>
-    <p>{post.excerpt}</p>
+    <h3 class="mb-2 font-serif text-[20px] font-medium leading-[1.3] tracking-[-0.01em] text-ink">
+      {post.title}
+    </h3>
+    <p class="text-[14px] leading-[1.55] text-secondary-3">{post.excerpt}</p>
   </div>
 </a>
-
-<style>
-  .row {
-    display: grid;
-    grid-template-columns: 96px 1fr;
-    gap: 32px;
-    padding: 30px 16px;
-    margin: 0 -16px;
-    border-bottom: 1px solid var(--hair-list);
-    border-radius: 6px;
-    text-decoration: none;
-    color: inherit;
-    transition: background 0.15s ease;
-  }
-  .row:hover {
-    background: var(--surface);
-  }
-  .when {
-    padding-top: 6px;
-    font-family: var(--mono);
-    font-size: 11px;
-    line-height: 1.6;
-    color: var(--faint-2);
-  }
-  .rt {
-    color: var(--rule);
-  }
-  .body {
-    max-width: 640px;
-  }
-  h3 {
-    margin: 0 0 8px;
-    font-family: var(--serif);
-    font-size: 20px;
-    line-height: 1.3;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-  }
-  p {
-    margin: 0;
-    font-size: 14px;
-    line-height: 1.55;
-    color: var(--text-2c);
-  }
-  @media (max-width: 560px) {
-    .row {
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    .when {
-      display: flex;
-      gap: 10px;
-      padding-top: 0;
-    }
-  }
-</style>

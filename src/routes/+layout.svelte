@@ -8,21 +8,10 @@
   let { children }: { children: Snippet } = $props();
 </script>
 
-<div class="shell">
+<div class="flex min-h-screen flex-col">
   <Header />
-  <div class="grow">
+  <div class="flex-1">
     {@render children()}
   </div>
   <Footer />
 </div>
-
-<style>
-  .shell {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-  .grow {
-    flex: 1;
-  }
-</style>

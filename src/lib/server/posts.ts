@@ -30,8 +30,8 @@ const Frontmatter = Schema.Struct({
 
 const decodeFrontmatter = Schema.decodeUnknownSync(Frontmatter);
 
-const postModules = import.meta.glob<PostModule>("/docs/*.md");
-const rawModules = import.meta.glob("/docs/*.md", {
+const postModules = import.meta.glob<PostModule>("/src/docs/*.md");
+const rawModules = import.meta.glob("/src/docs/*.md", {
   query: "?raw",
   import: "default",
   eager: true,

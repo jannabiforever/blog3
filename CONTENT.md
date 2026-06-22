@@ -62,7 +62,7 @@ src/content/posts/*.md   →  import.meta.glob (build time)  →  prerendered HT
 
 A bad `date:` or missing `excerpt:` used to fail late or silently. Now there's a **build-time schema check** so content errors fail loud, locally:
 
-- The post schema is defined once with **Effect Schema** in [`src/lib/server/posts.ts`](src/lib/server/posts.ts) and every file's frontmatter is parsed in `getAllPosts()`. On failure the build throws with the filename + the exact bad field (e.g. _"Invalid frontmatter in /docs/x.md: must be an ISO date string…"_).
+- The post schema is defined once with **Effect Schema** in [`src/lib/server/posts.ts`](src/lib/server/posts.ts) and every file's frontmatter is parsed in `getAllPosts()`. On failure the build throws with the filename + the exact bad field (e.g. _"Invalid frontmatter in /src/docs/x.md: must be an ISO date string…"_).
 - It lives under `$lib/server`, so **Effect never reaches the client bundle** — validation runs at build time for the prerendered site.
 - **`readTime` is auto-derived** from word count (~200 wpm); the frontmatter field is now an optional override only.
 

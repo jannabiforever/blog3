@@ -9,11 +9,15 @@
   <meta name="description" content="About {author.name}." />
 </svelte:head>
 
-<main class="wrap read about">
-  <header>
+<main class="wrap max-w-[42.5rem] pb-20">
+  <header class="mb-[34px] border-b border-hair pt-[60px] pb-[30px] text-center">
     <Eyebrow tone="accent" tracking="0.12em" mb={20}>About</Eyebrow>
-    <h1>{author.name}</h1>
-    <p class="dek">{author.role} — writing about the parts that don’t fit in a commit message.</p>
+    <h1 class="font-serif text-[30px] font-medium tracking-[-0.02em]">{author.name}</h1>
+    <p
+      class="mx-auto mt-5 max-w-[520px] font-serif text-[17px] leading-[1.55] text-secondary-2 italic"
+    >
+      {author.role} — writing about the parts that don’t fit in a commit message.
+    </p>
   </header>
 
   <Prose>
@@ -24,31 +28,3 @@
     </p>
   </Prose>
 </main>
-
-<style>
-  .about {
-    padding-bottom: 80px;
-  }
-  header {
-    text-align: center;
-    padding: 60px 0 30px;
-    margin-bottom: 34px;
-    border-bottom: 1px solid var(--hair);
-  }
-  h1 {
-    margin: 0;
-    font-family: var(--serif);
-    font-size: 30px;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-  }
-  .dek {
-    margin: 20px auto 0;
-    max-width: 520px;
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 17px;
-    line-height: 1.55;
-    color: var(--text-2b);
-  }
-</style>

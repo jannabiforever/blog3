@@ -18,55 +18,29 @@
   } = $props();
 </script>
 
-<figure class="fig" style="margin: 0 0 {mb}px;">
+<figure style="margin-bottom: {mb}px;">
   {#if src}
-    <img {src} {alt} style="aspect-ratio: {ratio};" />
+    <img
+      {src}
+      {alt}
+      class="block w-full rounded-[4px] border border-fig-border object-cover"
+      style="aspect-ratio: {ratio};"
+    />
   {:else}
-    <div class="placeholder" style="aspect-ratio: {ratio};">
-      {#if caption}<span class="chip">{caption}</span>{/if}
+    <div
+      class="fig-stripes flex items-end rounded-[4px] border border-fig-border p-4"
+      style="aspect-ratio: {ratio};"
+    >
+      {#if caption}
+        <span class="rounded-[3px] bg-bg/90 px-2 py-1 font-mono text-[11px] text-faint-2">
+          {caption}
+        </span>
+      {/if}
     </div>
   {/if}
-  {#if src && caption}<figcaption>{caption}</figcaption>{/if}
+  {#if src && caption}
+    <figcaption class="mt-[11px] text-center font-mono text-[11px] text-faint-2">
+      {caption}
+    </figcaption>
+  {/if}
 </figure>
-
-<style>
-  .fig {
-    padding: 0;
-  }
-  .placeholder {
-    display: flex;
-    align-items: flex-end;
-    padding: 16px;
-    border: 1px solid var(--fig-border);
-    border-radius: 4px;
-    background-image: repeating-linear-gradient(
-      135deg,
-      var(--stripe-a) 0,
-      var(--stripe-a) 12px,
-      var(--stripe-b) 12px,
-      var(--stripe-b) 24px
-    );
-  }
-  .chip {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--faint-2);
-    background: rgba(248, 247, 252, 0.9);
-    padding: 4px 8px;
-    border-radius: 3px;
-  }
-  img {
-    display: block;
-    width: 100%;
-    object-fit: cover;
-    border: 1px solid var(--fig-border);
-    border-radius: 4px;
-  }
-  figcaption {
-    margin-top: 11px;
-    text-align: center;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--faint-2);
-  }
-</style>

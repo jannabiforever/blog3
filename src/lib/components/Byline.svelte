@@ -19,51 +19,16 @@
   } = $props();
 </script>
 
-<div class="byline" class:center={align === "center"}>
-  <div class="avatar">{initials}</div>
-  <div class="meta">
-    <div class="name">{name}</div>
-    <div class="line">{dottedDate(date)} · {readTime}{suffix ? ` ${suffix}` : ""}</div>
+<div class="{align === 'center' ? 'inline-flex text-left' : 'flex'} items-center gap-[11px]">
+  <div
+    class="flex h-[34px] w-[34px] flex-none items-center justify-center rounded-full border border-avatar-border bg-avatar-bg font-mono text-[11px] font-medium text-accent"
+  >
+    {initials}
+  </div>
+  <div class="leading-[1.3]">
+    <div class="font-sans text-[13px] font-semibold text-ink">{name}</div>
+    <div class="font-mono text-[11px] text-faint">
+      {dottedDate(date)} · {readTime}{suffix ? ` ${suffix}` : ""}
+    </div>
   </div>
 </div>
-
-<style>
-  .byline {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-  }
-  .byline.center {
-    display: inline-flex;
-    text-align: left;
-  }
-  .avatar {
-    flex: none;
-    width: 34px;
-    height: 34px;
-    border-radius: 999px;
-    background: var(--avatar-bg);
-    border: 1px solid var(--avatar-border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--accent);
-  }
-  .meta {
-    line-height: 1.3;
-  }
-  .name {
-    font-family: var(--sans);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink);
-  }
-  .line {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--faint);
-  }
-</style>

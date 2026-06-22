@@ -18,7 +18,7 @@ pnpm check        # svelte-check (types)
 
 ## Writing a post
 
-Drop a Markdown file in [`docs/`](docs). The filename (minus `.md`) becomes the URL slug — `my-post.md` → `/posts/my-post`. Frontmatter is validated at build time with **Effect Schema** ([`src/lib/server/posts.ts`](src/lib/server/posts.ts)), so a missing or malformed field fails the build and names the offending file.
+Drop a Markdown file in [`src/docs/`](src/docs). The filename (minus `.md`) becomes the URL slug — `my-post.md` → `/posts/my-post`. Frontmatter is validated at build time with **Effect Schema** ([`src/lib/server/posts.ts`](src/lib/server/posts.ts)), so a missing or malformed field fails the build and names the offending file.
 
 ```markdown
 ---
@@ -53,8 +53,8 @@ That's the whole workflow: add a file, commit, push. See [CONTENT.md](CONTENT.md
 ## Architecture
 
 ```
-docs/*.md                   the posts (Markdown source — add / edit here)
 src/
+├─ docs/*.md                the posts (Markdown source — add / edit here)
 ├─ app.css                  Design tokens (CSS variables) + base + .wrap columns
 ├─ app.html                 Google Fonts (Newsreader / IBM Plex Sans / IBM Plex Mono)
 ├─ lib/

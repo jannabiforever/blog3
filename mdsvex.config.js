@@ -4,73 +4,12 @@ import { visit, SKIP } from "unist-util-visit";
 import katex from "katex";
 
 /**
- * Dark code theme derived from the design handoff tokens:
- *   bg #12161d · text #e3e8f0 · keyword #7cc4fb · fn #a9b4f5 · comment #6b7585
- * The remaining scopes use muted blues/violets so syntax stays in the
- * cool, restrained palette rather than the usual rainbow.
+ * Code highlighting uses Shiki's `one-dark-pro` — the closest bundled
+ * approximation of Zed's "One Dark" theme (the zed.dev/blog reference).
+ * Container styling (padding / radius / font) lives in Prose.svelte; the
+ * block's background and token colors come from the theme's inline styles.
  */
-const codeTheme = {
-  name: "jungin-dark",
-  type: "dark",
-  fg: "#e3e8f0",
-  bg: "#12161d",
-  settings: [
-    { settings: { foreground: "#e3e8f0", background: "#12161d" } },
-    {
-      scope: ["comment", "punctuation.definition.comment"],
-      settings: { foreground: "#6b7585", fontStyle: "italic" },
-    },
-    {
-      scope: [
-        "keyword",
-        "keyword.control",
-        "keyword.operator",
-        "storage",
-        "storage.type",
-        "storage.modifier",
-        "variable.language",
-        "constant.language",
-        "support.type.primitive",
-      ],
-      settings: { foreground: "#7cc4fb" },
-    },
-    {
-      scope: [
-        "entity.name.function",
-        "support.function",
-        "meta.function-call",
-        "meta.function-call.generic",
-      ],
-      settings: { foreground: "#a9b4f5" },
-    },
-    {
-      scope: [
-        "entity.name.type",
-        "entity.name.class",
-        "entity.name.namespace",
-        "support.type",
-        "support.class",
-      ],
-      settings: { foreground: "#86b8f0" },
-    },
-    {
-      scope: ["string", "string.quoted", "string.template", "constant.character"],
-      settings: { foreground: "#9bb4cf" },
-    },
-    {
-      scope: ["constant.numeric", "constant.other", "constant.language.boolean"],
-      settings: { foreground: "#c0a9f0" },
-    },
-    {
-      scope: ["variable", "meta.definition.variable", "support.variable"],
-      settings: { foreground: "#e3e8f0" },
-    },
-    {
-      scope: ["punctuation", "meta.brace", "meta.delimiter"],
-      settings: { foreground: "#aab3c0" },
-    },
-  ],
-};
+const CODE_THEME = "one-dark-pro";
 
 const LANGS = [
   "rust",
@@ -94,7 +33,7 @@ let highlighterPromise;
 function getHighlighter() {
   if (!highlighterPromise) {
     highlighterPromise = createHighlighter({
-      themes: [codeTheme],
+      themes: [CODE_THEME],
       langs: LANGS,
     });
   }
@@ -160,7 +99,7 @@ const config = defineConfig({
       const language = hl.getLoadedLanguages().includes(lang) ? lang : "text";
       const html = hl.codeToHtml(code, {
         lang: language,
-        theme: "jungin-dark",
+        theme: CODE_THEME,
       });
       return `{@html \`${escapeSvelte(html)}\`}`;
     },

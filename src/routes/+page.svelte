@@ -16,76 +16,35 @@
   <meta name="description" content={site.description} />
 </svelte:head>
 
-<main class="wrap wide">
-  <section class="hero">
+<main class="wrap max-w-[70rem]">
+  <section class="animate-fade-up pt-16 pb-11 text-center max-[720px]:pt-11 max-[720px]:pb-8">
     <Eyebrow tone="meta" tracking="0.18em" mb={30}>
       {site.tagline} &nbsp;·&nbsp; {data.posts.length} essays
     </Eyebrow>
-    <h1>{site.heroTitle}</h1>
-    <div class="rule"></div>
-    <p class="dek">{site.heroSub}</p>
+    <h1
+      class="mx-auto max-w-[720px] font-serif text-[38px] leading-[1.18] font-medium tracking-[-0.02em] text-balance max-[720px]:text-[30px]"
+    >
+      {site.heroTitle}
+    </h1>
+    <div class="mx-auto mt-[34px] h-px w-[54px] bg-rule"></div>
+    <p
+      class="mx-auto mt-[30px] max-w-[520px] font-serif text-[17px] leading-[1.55] text-secondary-2 italic"
+    >
+      {site.heroSub}
+    </p>
   </section>
 
   {#if featured}
-    <section class="featured-sec">
+    <section class="border-y border-hair pt-7">
       <Eyebrow tone="section" tracking="0.16em">Featured</Eyebrow>
       <FeaturedPost post={featured} />
     </section>
   {/if}
 
-  <section class="latest">
+  <section class="pt-10 pb-[100px]">
     <Eyebrow tone="section" tracking="0.16em" mb={6}>Latest</Eyebrow>
     {#each rest as post (post.slug)}
       <PostRow {post} />
     {/each}
   </section>
 </main>
-
-<style>
-  .hero {
-    padding: 64px 0 44px;
-    text-align: center;
-    animation: fadeUp 0.5s ease both;
-  }
-  .hero h1 {
-    margin: 0 auto;
-    max-width: 720px;
-    font-family: var(--serif);
-    font-size: 38px;
-    line-height: 1.18;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    text-wrap: balance;
-  }
-  .rule {
-    width: 54px;
-    height: 1px;
-    margin: 34px auto 0;
-    background: var(--rule);
-  }
-  .dek {
-    margin: 30px auto 0;
-    max-width: 520px;
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 17px;
-    line-height: 1.55;
-    color: var(--text-2b);
-  }
-  .featured-sec {
-    padding: 28px 0 0;
-    border-top: 1px solid var(--hair);
-    border-bottom: 1px solid var(--hair);
-  }
-  .latest {
-    padding: 40px 0 100px;
-  }
-  @media (max-width: 720px) {
-    .hero {
-      padding: 44px 0 32px;
-    }
-    .hero h1 {
-      font-size: 30px;
-    }
-  }
-</style>
