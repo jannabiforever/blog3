@@ -80,7 +80,7 @@ jobs:
       # output, incl. the fallback function) exactly like Netlify's git deploy,
       # then ships it. Auth is headless via the two env secrets below.
       - name: Build & deploy to Netlify
-        run: pnpm dlx netlify-cli@26 deploy --build --prod --message "${{ github.sha }}"
+        run: pnpm --package=netlify-cli@26 dlx netlify deploy --build --prod --message "${{ github.sha }}"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
