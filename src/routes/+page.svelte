@@ -6,8 +6,7 @@
 
   let { data }: { data: PageData } = $props();
 
-  const featured = $derived(data.posts.find((p) => p.featured) ?? data.posts[0]);
-  const rest = $derived(data.posts.filter((p) => p.slug !== featured?.slug));
+  const rest = $derived(data.posts);
 </script>
 
 <svelte:head>

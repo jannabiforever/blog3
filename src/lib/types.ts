@@ -9,8 +9,6 @@ export interface PostFrontmatter {
   excerpt: string;
   /** Optional manual override; auto-estimated from word count when omitted. */
   readTime?: string;
-  /** Surface this post in the Home "Featured" slot. */
-  featured?: boolean;
   /** Caption for the hero figure (omit to hide the placeholder caption). */
   coverCaption?: string;
   /** Set false to suppress the hero figure entirely. */
