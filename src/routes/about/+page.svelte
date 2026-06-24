@@ -1,6 +1,29 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import Eyebrow from "$lib/components/Eyebrow.svelte";
   import Figure from "$lib/components/Figure.svelte";
+
+  // All portraits in the assets folder, optimized at build time by
+  // @sveltejs/enhanced-img (avif/webp + responsive sizes). Drop more files in
+  // to extend the rotation; with none present the placeholder below shows.
+  const portraitModules = import.meta.glob<{ default: string }>(
+    "/src/lib/assets/portraits/*.{avif,gif,heic,heif,jpeg,jpg,png,tiff,webp,AVIF,GIF,HEIC,HEIF,JPEG,JPG,PNG,TIFF,WEBP}",
+    { eager: true, query: { enhanced: true } },
+  );
+  const portraits = Object.values(portraitModules).map((m) => m.default);
+
+  // Cycle through them across visits SSR renders the first, then on
+  // mount we show the stored index and advance it so the next load steps on.
+  // onMount (not $effect) so it runs exactly once per visit — no double-step.
+  let index = $state(0);
+  onMount(() => {
+    if (portraits.length <= 1) return;
+    const n = portraits.length;
+    const stored = Number(localStorage.getItem("about:portrait"));
+    const start = Number.isInteger(stored) ? ((stored % n) + n) % n : 0;
+    index = start;
+    localStorage.setItem("about:portrait", String((start + 1) % n));
+  });
 </script>
 
 <svelte:head>
@@ -23,14 +46,19 @@
         >
           A few things about me, in no particular order.
         </h1>
-        <p class="mt-6.5 text-[18px] leading-[1.55] text-secondary-2 italic">
-          Jungin, 2003. I teach math, and the rest of my hours go into building something on my own.
-          This is where I leave whatever's left over.
-        </p>
+        <p class="mt-6.5 text-[18px] leading-[1.55] text-secondary-2 italic">Jungin, 2003.</p>
       </div>
 
       <div class="w-42">
-        <Figure ratio="3/4" caption="portrait" />
+        {#if portraits.length}
+          <enhanced:img
+            src={portraits[index]}
+            alt="Jungin"
+            class="block aspect-3/4 w-full rounded-sm border border-fig-border object-cover"
+          />
+        {:else}
+          <Figure ratio="3/4" caption="portrait" />
+        {/if}
       </div>
     </div>
 
