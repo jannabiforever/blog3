@@ -11,6 +11,20 @@ import katex from "katex";
  */
 const CODE_THEME = "one-dark-pro";
 
+/**
+ * Copy button, baked into the highlighted HTML at build time (Shiki's
+ * recommended approach — the button ships in the static markup rather than
+ * being assembled by client-side DOM surgery). Prose.svelte only attaches a
+ * single delegated click handler to drive the clipboard write.
+ *
+ * Icons are inlined SVG (viewBox 0 0 24 24, currentColor) so CSS owns the
+ * color/state; the `.code-block` wrapper is the positioning context that keeps
+ * the button pinned outside the <pre>'s horizontal scroll area.
+ */
+const COPY_ICON = `<svg class="i-copy" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+const CHECK_ICON = `<svg class="i-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>`;
+const COPY_BUTTON = `<button type="button" class="code-copy" title="Copy" aria-label="Copy code">${COPY_ICON}${CHECK_ICON}</button>`;
+
 const LANGS = [
   "rust",
   "typescript",
@@ -22,6 +36,7 @@ const LANGS = [
   "c",
   "go",
   "json",
+  "jsonc",
   "yaml",
   "css",
   "html",
@@ -101,7 +116,8 @@ const config = defineConfig({
         lang: language,
         theme: CODE_THEME,
       });
-      return `{@html \`${escapeSvelte(html)}\`}`;
+      const block = `<div class="code-block">${html}${COPY_BUTTON}</div>`;
+      return `{@html \`${escapeSvelte(block)}\`}`;
     },
   },
   rehypePlugins: [rehypeKatex],

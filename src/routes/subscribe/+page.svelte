@@ -41,7 +41,4 @@
       Notify me
     </button>
   </form>
-  <p class="mt-5.5 font-mono text-[11px] text-muted-3">
-    Hook this up to a provider (Buttondown, Listmonk, ConvertKit…) — see CONTENT.md.
-  </p>
 </main>
