@@ -26,11 +26,14 @@ export const site = {
   /**
    * Newsletter via Buttondown. The static site has no backend, so the form
    * POSTs straight to Buttondown's public embed-subscribe endpoint (no API key).
-   * Set `username` to your Buttondown handle (Settings → Embedding); an empty
-   * value disables the form and falls back to RSS-only.
+   *
+   * This single `username` flag gates the whole feature: an empty value
+   * disables the subscribe form (RSS-only fallback) AND hides the header
+   * Subscribe CTA. Currently disabled until the blog has enough traffic to
+   * warrant a newsletter — re-enable by restoring the handle ("jungini1226").
    */
   newsletter: {
     provider: "buttondown",
-    username: "jungini1226",
+    username: "",
   },
 } as const;

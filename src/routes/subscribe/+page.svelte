@@ -95,7 +95,7 @@
         tabindex="-1"
         autocomplete="off"
         aria-hidden="true"
-        class="absolute -left-[9999px] h-px w-px opacity-0"
+        class="absolute left-[-9999px] h-px w-px opacity-0"
       />
       <button
         type="submit"

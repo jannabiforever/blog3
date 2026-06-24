@@ -1,11 +1,15 @@
 <script lang="ts">
   import { page } from "$app/state";
   import { resolve } from "$app/paths";
+  import { site } from "$lib/config";
 
   const path = $derived(page.url.pathname);
   const isHome = $derived(path === "/");
   const isArchive = $derived(path.startsWith("/archive"));
   const isAbout = $derived(path.startsWith("/about"));
+
+  // Single flag gates the whole feature (see config.ts newsletter).
+  const subscribeEnabled = site.newsletter.username.length > 0;
 
   const nav =
     "px-3 py-2 font-mono text-[11px] uppercase tracking-[0.08em] transition-colors hover:text-ink max-[560px]:px-1.75";
@@ -27,12 +31,14 @@
       <a href={resolve("/archive")} class="{nav} {isArchive ? 'text-ink' : 'text-muted'}">Archive</a
       >
       <a href={resolve("/about")} class="{nav} {isAbout ? 'text-ink' : 'text-muted'}">About</a>
-      <a
-        href={resolve("/subscribe")}
-        class="ml-2 rounded-full border border-subscribe-border bg-surface px-3.25 py-1.75 font-mono text-[11px] uppercase tracking-[0.08em] text-ink max-[560px]:hidden"
-      >
-        Subscribe
-      </a>
+      {#if subscribeEnabled}
+        <a
+          href={resolve("/subscribe")}
+          class="ml-2 rounded-full border border-subscribe-border bg-surface px-3.25 py-1.75 font-mono text-[11px] uppercase tracking-[0.08em] text-ink max-[560px]:hidden"
+        >
+          Subscribe
+        </a>
+      {/if}
     </nav>
   </div>
 </header>
