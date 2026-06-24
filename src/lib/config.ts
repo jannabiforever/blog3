@@ -23,4 +23,14 @@ export const site = {
     rss: "/rss.xml",
     email: "mailto:jungini1226@gmail.com",
   },
+  /**
+   * Newsletter via Buttondown. The static site has no backend, so the form
+   * POSTs straight to Buttondown's public embed-subscribe endpoint (no API key).
+   * Set `username` to your Buttondown handle (Settings → Embedding); an empty
+   * value disables the form and falls back to RSS-only.
+   */
+  newsletter: {
+    provider: "buttondown",
+    username: "jungini1226",
+  },
 } as const;
