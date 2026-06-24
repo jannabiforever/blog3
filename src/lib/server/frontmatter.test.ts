@@ -21,7 +21,7 @@ describe("frontmatter schema", () => {
         ...base,
         readTime: "5 min",
         featured: true,
-        cover: false,
+        coverImage: "/covers/example.webp",
         coverCaption: "figure — caption",
         draft: true,
       }),

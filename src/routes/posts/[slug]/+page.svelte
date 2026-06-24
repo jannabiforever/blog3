@@ -49,8 +49,14 @@
         />
       </header>
 
-      {#if meta.cover !== false}
-        <Figure ratio="16/9" caption={meta.coverCaption ?? ""} mb={36} />
+      {#if meta.coverImage}
+        <Figure
+          ratio="16/9"
+          src={meta.coverImage}
+          alt={meta.title}
+          caption={meta.coverCaption ?? ""}
+          mb={36}
+        />
       {/if}
 
       <Prose>

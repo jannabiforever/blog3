@@ -20,7 +20,8 @@ export const Frontmatter = Schema.Struct({
   readTime: Schema.optional(Schema.String),
   featured: Schema.optional(Schema.Boolean),
   coverCaption: Schema.optional(Schema.String),
-  cover: Schema.optional(Schema.Boolean),
+  /** Path to the hero image (e.g. "/covers/slug.webp"); omit to hide the hero. */
+  coverImage: Schema.optional(Schema.String),
   draft: Schema.optional(Schema.Boolean),
 });
 
