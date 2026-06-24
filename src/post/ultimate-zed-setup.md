@@ -243,7 +243,7 @@ I deliberately don't set a global `format_on_save`. I drive formatting through p
 
 Python runs ruff's lint-autofix; TypeScript organizes imports.
 
-> **A note to my future self, and to you:** `source.fixAll.ruff` runs ruff's lint _fixes_ — it is not the same as running `ruff format`. If you want the formatter proper, you also need ruff wired as the formatter (or `format_on_save` enabled for Python). Audit your own setup here and decide whether you want lint-fix only or lint-fix _plus_ format on every save; the asymmetry between my Python and TypeScript blocks above is the kind of thing that's easy to leave half-finished. 
+> **A note to my future self, and to you:** `source.fixAll.ruff` runs ruff's lint _fixes_ — it is not the same as running `ruff format`. If you want the formatter proper, you also need ruff wired as the formatter (or `format_on_save` enabled for Python). Audit your own setup here and decide whether you want lint-fix only or lint-fix _plus_ format on every save; the asymmetry between my Python and TypeScript blocks above is the kind of thing that's easy to leave half-finished.
 
 This is the one corner of my config I'd tell you to copy _thoughtfully_ rather than wholesale, because the right answer depends on your toolchain and your taste for how much happens silently on `:w`.
 
@@ -321,7 +321,6 @@ So here's the payoff, and it's almost paradoxical: **my agent config is nearly e
 ```
 
 — a notification so I know when the agent is waiting on me across monitors. The model selection, tool-action permissions, default profiles, and MCP server wiring (I run an HWPX document-operations server, among others) aren't a pile of plugin glue I maintain; they're editor surface I configure. In Neovim that list would have been a stack of plugins each with its own lifecycle. Here it's settings.
-
 
 I'm deliberately not pasting my full `context_servers` / `model` block yet, because the honest version of this section is verified config, not config reconstructed from memory — and that's a short follow-up rather than something I'll guess at here. But the shape of the lesson is already the whole thesis: the editor that makes AI the editor is the one where this section gets shorter every release instead of longer.
 
