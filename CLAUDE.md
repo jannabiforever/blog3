@@ -44,7 +44,7 @@ Run a single test by name: `pnpm exec vitest run -t "rejects a non-ISO date"` (o
 
 **Design tokens** are Tailwind v4 `@theme` declarations in `src/app.css` (colors, type families, animation) — re-theming is a one-file change. `@tailwindcss/typography` is enabled. `Prose.svelte` isolates the `:global()` styling for mdsvex-rendered article HTML.
 
-**Site identity / copy** lives in `src/lib/config.ts` (`site`,  nav, socials). `site.url` feeds canonical links and the RSS feed — keep it correct.
+**Site identity / copy** lives in `src/lib/config.ts` (`site`, nav, socials). `site.url` feeds canonical links and the RSS feed — keep it correct.
 
 See `README.md` for the full file tree and the authoring workflow, and `CONTENT.md` for the (aspirational) content-management roadmap — note CONTENT.md predates a rename and refers to `src/content/posts/` and `src/lib/posts.ts`, which are now `src/post/` and `src/lib/server/posts.ts`.
 
