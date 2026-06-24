@@ -44,9 +44,15 @@
         <h1
           class="m-0 text-[38px] leading-[1.16] font-medium tracking-[-0.02em] text-balance text-ink"
         >
-          A few things about me, in no particular order.
+          A few things about me
         </h1>
-        <p class="mt-6.5 text-[18px] leading-[1.55] text-secondary-2 italic">Jungin, 2003.</p>
+        <p class="mt-6.5 text-[16px] leading-[1.55] text-secondary-2 italic">Jungin, 2003.</p>
+        <p class="mt-2 text-[16px] leading-[1.55] text-secondary-2 italic">
+          Majoring in Physics and Astronomy at Seoul National University.
+        </p>
+        <p class="mt-2 text-[16px] leading-[1.55] text-secondary-2 italic">
+          Graduated from Seoul Science High School in 2021 (31st class).
+        </p>
       </div>
 
       <div class="w-42">
@@ -61,52 +67,27 @@
         {/if}
       </div>
     </div>
-
-    <div class="mt-10.5 h-px w-13.5 bg-rule"></div>
   </section>
 
-  <!-- Section 2 — Background -->
+  <div class="mt-10.5 h-px w-13.5 bg-rule"></div>
+
   <section class="pt-10">
     <p class="m-0 mb-6">
-      I studied a fair bit of physics and math before this. I liked it more than I expected to, and
-      at some point it just stuck. I didn't end up doing it for a living, which is fine — I still
-      read a paper here and there to keep the door open.
-    </p>
-    <p class="m-0 mb-6">
-      What carried over wasn't really the math. It was more a habit of looking for the shape of a
-      thing before the details. I notice when two unrelated problems turn out to be the same
-      underneath. It's handy with code, most of the time.
-    </p>
-    <p class="m-0">
-      That's about it for the background. I tend to think in terms of structure first, and fill in
-      the specifics later.
+      I've studied a fair bit of physics and math. In physics, I'm drawn to hep-th, especially
+      particle physics, along with black hole thermodynamics and the information theory around it.
+      On the math side, a little differential geometry and topology — and a touch of Morse theory.
     </p>
   </section>
 
-  <!-- Section 3 — Why I write here -->
-  <section class="pt-12">
-    <Eyebrow tone="section" tracking="0.16em" mb={18}>Why I write here</Eyebrow>
+  <section class="pt-4">
+    <Eyebrow tone="section" tracking="0.16em" mb={18}>Extra stuff</Eyebrow>
     <p class="m-0 mb-6">
-      I work mostly on my own, so writing is a way of checking my own thinking. If an idea still
-      makes sense once it's written down, it was probably worth keeping. If it doesn't, that's good
-      to know too.
+      These days I mostly play chess in my free time, and the piano now and then. Chopin is my
+      favorite, with Rachmaninoff a close second.
     </p>
     <p class="m-0">
-      None of it is meant as advice. It's just a notebook I keep in the open, and sometimes I get
-      things wrong.
+      I used to train Brazilian jiu-jitsu, but stopped after a few months. Maybe I'll come back to
+      it someday.
     </p>
-  </section>
-
-  <!-- Section 4 — Off the clock -->
-  <section class="pt-12 pb-25">
-    <div class="flex flex-wrap gap-2.5">
-      {#each ["Chess", "Brazilian jiu-jitsu", "Piano", "Lifting"] as chip (chip)}
-        <span
-          class="rounded-full border border-avatar-border bg-surface px-3.25 py-1.75 font-mono text-[11px] tracking-[0.04em] text-secondary-3"
-        >
-          {chip}
-        </span>
-      {/each}
-    </div>
   </section>
 </main>

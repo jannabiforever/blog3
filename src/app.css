@@ -176,7 +176,7 @@
   content: "";
 }
 .prose code {
-  padding: 1px 6px;
+  padding: 0px 0px;
   border-radius: 5px;
   background: var(--color-inline-code);
   font-family: var(--font-mono);
@@ -187,7 +187,7 @@
 /* Code block — Shiki (one-dark-pro) owns background + token colors */
 .prose pre {
   margin: 0 0 24px;
-  padding: 24px;
+  padding: 12px;
   border-radius: 10px;
   overflow-x: auto;
   font-family: var(--font-mono);

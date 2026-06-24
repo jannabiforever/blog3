@@ -30,19 +30,29 @@
     if (!container) return;
     container.dataset.enhanced = "";
 
+    // Only one button shows the "copied" state at a time. Track it so copying a
+    // second block resets the first immediately, rather than letting a shared
+    // timer cancel the first block's revert and strand it on the check icon.
     let timer: ReturnType<typeof setTimeout>;
+    let copied: HTMLButtonElement | null = null;
+    function reset() {
+      if (!copied) return;
+      delete copied.dataset.copied;
+      copied.setAttribute("aria-label", "Copy code");
+      copied = null;
+    }
+
     async function onClick(event: MouseEvent) {
       const btn = (event.target as Element).closest(".code-copy");
       if (!(btn instanceof HTMLButtonElement)) return;
       const code = btn.closest(".code-block")?.querySelector("code");
       await copy(code?.textContent ?? "");
+      clearTimeout(timer);
+      reset();
       btn.dataset.copied = "true";
       btn.setAttribute("aria-label", "Copied");
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        delete btn.dataset.copied;
-        btn.setAttribute("aria-label", "Copy code");
-      }, 2000);
+      copied = btn;
+      timer = setTimeout(reset, 2000);
     }
 
     container.addEventListener("click", onClick);
